@@ -1,5 +1,5 @@
 const palpitesService = require('../services/palpitesService');
-
+// Cria um novo palpite do usuário logado
 async function criar(req, res) {
   try {
     const usuarioId = req.usuario.id;
@@ -12,7 +12,7 @@ async function criar(req, res) {
     });
   }
 }
-
+// Lista apenas os palpites do usuário logado
 async function listar(req, res) {
   try {
     const usuarioId = req.usuario.id;
@@ -25,7 +25,7 @@ async function listar(req, res) {
     });
   }
 }
-
+// Atualiza um palpite do usuário logado
 async function atualizar(req, res) {
   try {
     const usuarioId = req.usuario.id;
@@ -40,7 +40,7 @@ async function atualizar(req, res) {
     });
   }
 }
-
+// Deleta um palpite do usuário logado
 async function deletar(req, res) {
   try {
     const usuarioId = req.usuario.id;

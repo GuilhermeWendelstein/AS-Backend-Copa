@@ -1,9 +1,10 @@
 const axios = require('axios');
-
+// Busca os jogos na WorldCupAPI
 async function listarJogos() {
   const response = await axios.get(process.env.WORLD_CUP_API);
-
+// Trata os dados para não devolver o JSON gigante da API
   return response.data.map((jogo) => {
+   // utilizei o ?. para ser opcional quando vir o time 
     return {
       jogo: `${jogo.homeTeam?.name || 'A definir'} x ${jogo.outsideTeam?.name || 'A definir'}`,
       time_a: jogo.homeTeam?.name || 'A definir',
@@ -21,3 +22,5 @@ async function listarJogos() {
 module.exports = {
   listarJogos
 };
+
+

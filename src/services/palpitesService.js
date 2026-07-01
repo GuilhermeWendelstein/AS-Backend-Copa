@@ -1,6 +1,6 @@
 const axios = require('axios');
 const database = require('../database');
-
+// Cria um palpite para o usuário logado
 async function criarPalpite(usuarioId, dados) {
   const { time_a, time_b, gols_a, gols_b, data_jogo } = dados;
 
@@ -9,15 +9,15 @@ async function criarPalpite(usuarioId, dados) {
     error.status = 400;
     throw error;
   }
-
+// Impede placar negativo
   if (gols_a < 0 || gols_b < 0) {
     const error = new Error('Os gols não podem ser negativos.');
     error.status = 400;
     throw error;
   }
-
+// Pega o ano da data do jogo
   const ano = new Date(data_jogo).getFullYear();
-
+// se utiliza o promisse.all para puxar as 2 apis externas ao mesmo tempo, ao inves de usar separada
   const [dolarResponse, feriadosResponse] = await Promise.all([
     axios.get('https://economia.awesomeapi.com.br/json/last/USD-BRL'),
     axios.get(`https://brasilapi.com.br/api/feriados/v1/${ano}`)

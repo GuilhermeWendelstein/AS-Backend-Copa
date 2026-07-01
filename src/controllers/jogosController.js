@@ -1,5 +1,5 @@
 const jogosService = require('../services/jogosService');
-
+// Busca os jogos na API externa
 async function listar(req, res) {
   try {
     const jogos = await jogosService.listarJogos();

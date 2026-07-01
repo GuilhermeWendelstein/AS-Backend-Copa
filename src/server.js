@@ -11,13 +11,13 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+// Rota simples para testar se a API está rodando
 app.get('/', (req, res) => {
   return res.json({
     mensagem: 'API do Bolão da Copa 2026 rodando com sucesso!'
   });
 });
-
+// Registra as rotas com o prefixo 
 app.use('/api', authRoutes);
 app.use('/api', jogosRoutes);
 app.use('/api', palpitesRoutes);
